@@ -1,0 +1,111 @@
+{
+  "users": [
+    {
+      "username": "admin",
+      "password": "$2b$10$GiDHFTYSgHqpiRrjW4bonuznC0yOGKyVOSS4/4.rVQJAx2z6FihUu",
+      "role": "admin",
+      "name": "super",
+      "surname": "admin",
+      "devicetoken": "cv8oDQXSQf2O-BFyxP7s63:APA91bFHsKPVl3MFwp3kn_P0_nHxIpWv9A86P1pqQM1sLvqgjNT_tmJzto15JfJ2Iw2Je-aWcGy5l9G6sGesYAsMAyTVSI_QFuImGses92Bpy2xEuVV8rKk"
+    },
+    {
+      "username": "admin2",
+      "password": "$2b$10$LxMFVnL87A8tyki8GhqjcuCWnhx4Vs0sB5rhiW7nOJcMTzcoWT6Be",
+      "role": "admin",
+      "name": "Aditi",
+      "surname": "Sookdhaw",
+      "devicetoken": "cv8oDQXSQf2O-BFyxP7s63:APA91bFHsKPVl3MFwp3kn_P0_nHxIpWv9A86P1pqQM1sLvqgjNT_tmJzto15JfJ2Iw2Je-aWcGy5l9G6sGesYAsMAyTVSI_QFuImGses92Bpy2xEuVV8rKk"
+    },
+    {
+      "username": "kb",
+      "password": "$2b$10$79qn07CQ9DYGZURhibSG3eOgMHhBNGtTfpjUbtF12I/DfN7lghUse",
+      "name": "Kylelieie",
+      "surname": "Pillay",
+      "role": "member",
+      "devicetoken": ""
+    },
+    {
+      "username": "kp",
+      "password": "$2b$10$O0owOt0LmTKvSaNAiRSSdO7qg/dEYJF0aGy6ugFQT2/tlx8VQLJDe",
+      "name": "Kyle",
+      "surname": "Pillay",
+      "role": "member",
+      "devicetoken": ""
+    },
+    {
+      "username": "RA",
+      "password": "$2b$10$RnfeN75X14eFZwU3dLqiROh.1RwWCHwV6f26VzsdRoFVC3naViG0W",
+      "name": "Ryan",
+      "surname": "Arumugam",
+      "role": "member",
+      "devicetoken": "cv8oDQXSQf2O-BFyxP7s63:APA91bFHsKPVl3MFwp3kn_P0_nHxIpWv9A86P1pqQM1sLvqgjNT_tmJzto15JfJ2Iw2Je-aWcGy5l9G6sGesYAsMAyTVSI_QFuImGses92Bpy2xEuVV8rKk"
+    },
+    {
+      "username": "TD",
+      "password": "$2b$10$QsfO4NL/iOI.bJr0aQBjEe7ppA71EQJgl/DqTDia8MUO3RuYxo9mm",
+      "name": "talha",
+      "surname": "dada",
+      "role": "member",
+      "devicetoken": "cv8oDQXSQf2O-BFyxP7s63:APA91bFHsKPVl3MFwp3kn_P0_nHxIpWv9A86P1pqQM1sLvqgjNT_tmJzto15JfJ2Iw2Je-aWcGy5l9G6sGesYAsMAyTVSI_QFuImGses92Bpy2xEuVV8rKk"
+    }
+  ],
+  "nodes": [
+    {
+      "node_id": 1,
+      "name": "Home Hub",
+      "location": "Living Room",
+      "type": "local",
+      "city": "Durban",
+      "country": "South Africa",
+      "latitude": -29.8587,
+      "longitude": 31.0218
+    },
+    {
+      "node_id": 2,
+      "name": "Office Hub",
+      "location": "Office",
+      "type": "cloud",
+      "city": "Johannesburg",
+      "country": "South Africa",
+      "latitude": -26.2041,
+      "longitude": 28.0473
+    },
+    {
+      "node_id": 3,
+      "name": "Vacation Home Hub",
+      "location": "Canada",
+      "type": "cloud",
+      "city": "Toronto",
+      "country": "Canada",
+      "latitude": 43.6532,
+      "longitude": -79.3832
+    }
+  ],
+  "users_nodes": [
+    {
+      "id": 1,
+      "username": "admin",
+      "node_id": 1
+    },
+    {
+      "id": 2,
+      "username": "admin",
+      "node_id": 2
+    },
+    {
+      "id": 3,
+      "username": "admin2",
+      "node_id": 1
+    },
+    {
+      "id": 4,
+      "username": "admin2",
+      "node_id": 2
+    },
+    {
+      "id": 5,
+      "username": "admin2",
+      "node_id": 3
+    }
+  ]
+}
