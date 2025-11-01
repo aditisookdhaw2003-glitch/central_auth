@@ -3,7 +3,7 @@ require('dotenv').config(); // load .env first
 const express = require('express');
 const bodyParser = require('body-parser');
 
-const { PORT } = require('./config');
+//const { PORT } = require('./config');
 const authMiddleware = require('./middleware/auth_middleware');
 
 const authRoutes = require('./routes/auth');
@@ -26,6 +26,6 @@ app.use('/nodes', authMiddleware, nodeRoutes);
 app.use('/users_nodes', authMiddleware, usersnodesRoutes);
 app.use('/settings', authMiddleware, settingsRoutes);
 
-
+const PORT = process.env.PORT || 4001;
 
 app.listen(PORT, () => console.log(`Central Auth running on port ${PORT}`));
