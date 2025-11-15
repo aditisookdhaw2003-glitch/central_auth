@@ -16,6 +16,7 @@ const hubsRoutes = require('./routes/hubs');
 const nodeRoutes = require('./routes/nodes');
 const usersnodesRoutes = require('./routes/users_nodes');
 const settingsRoutes = require('./routes/settings');
+const notificationsRoutes = require("./routes/notifications");
 
 const app = express();
 app.use(bodyParser.json());
@@ -23,6 +24,7 @@ app.use(bodyParser.json());
 // Public routes
 app.use('/auth', authRoutes);
 app.use('/hubs', hubsRoutes);
+app.use('/notifications', notificationsRoutes);
 
 
 // All routes after this require a valid token
