@@ -28,6 +28,7 @@ app.use('/notifications', notificationsRoutes);
 
 
 // All routes after this require a valid token
+//hghg
 //app.use(authMiddleware);
 app.use('/nodes', authMiddleware, nodeRoutes);
 app.use('/users_nodes', authMiddleware, usersnodesRoutes);
