@@ -8,6 +8,14 @@ const router = express.Router();
 // Path to db.json (adjust if needed)
 const DB_PATH = path.join(__dirname, "..", "db.json");
 
+const serviceAccount = JSON.parse(process.env.FIREBASE_CREDENTIALS);
+
+if (!admin.apps.length) {
+  admin.initializeApp({
+    credential: admin.credential.cert(serviceAccount)
+  });
+}
+
 function loadDB() {
   const raw = fs.readFileSync(DB_PATH, "utf-8");
   return JSON.parse(raw);
