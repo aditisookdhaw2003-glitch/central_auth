@@ -1,38 +1,37 @@
 const express = require("express");
 const fs = require("fs");
 const path = require("path");
-const serviceAccount = require("firebase-admin");
-
+const admin = require("firebase-admin"); // <-- require only once
 const router = express.Router();
 
-// Path to db.json (adjust if needed)
+// Path to db.json
 const DB_PATH = path.join(__dirname, "..", "db.json");
 
-const serviceAccount = JSON.parse(process.env.FIREBASE_CREDENTIALS);
-
+// Initialize Firebase Admin once using environment variable
 if (!admin.apps.length) {
+  const serviceAccount = JSON.parse(process.env.FIREBASE_CREDENTIALS);
+
   admin.initializeApp({
     credential: admin.credential.cert(serviceAccount)
   });
 }
 
+// Helper to load db.json
 function loadDB() {
   const raw = fs.readFileSync(DB_PATH, "utf-8");
   return JSON.parse(raw);
 }
 
-
+// Routes
 router.get("/users/nodes/:node_id", (req, res) => {
   const nodeId = parseInt(req.params.node_id);
   const db = loadDB();
 
   const matches = db.users_nodes.filter(entry => entry.node_id === nodeId);
-
   const usernames = matches.map(m => ({ username: m.username }));
 
   return res.json(usernames);
 });
-
 
 router.get("/users/token/:username", (req, res) => {
   const username = req.params.username;
@@ -40,19 +39,18 @@ router.get("/users/token/:username", (req, res) => {
 
   const user = db.users.find(u => u.username === username);
 
-  if (!user) {
-    return res.status(404).json({ error: "User not found" });
-  }
+  if (!user) return res.status(404).json({ error: "User not found" });
 
   return res.json({ devicetoken: user.devicetoken || null });
 });
 
+// Trigger notifications
 router.post("/notifications/trigger", async (req, res) => {
   try {
     const { sensor, value, node_id, timestamp } = req.body;
+    const db = loadDB();
 
     // 1️⃣ Find usernames linked to node_id
-    const db = JSON.parse(fs.readFileSync(path.join(__dirname, "..", "db.json"), "utf8"));
     const matchedNodes = db.users_nodes.filter(entry => entry.node_id === node_id);
     const usernames = matchedNodes.map(m => m.username);
 
@@ -67,15 +65,6 @@ router.post("/notifications/trigger", async (req, res) => {
     }
 
     // 3️⃣ Send FCM notifications
-    const admin = require("firebase-admin");
-    const serviceAccount = require("../firebase-service-account.json");
-
-    if (!admin.apps.length) {
-      admin.initializeApp({
-        credential: admin.credential.cert(serviceAccount)
-      });
-    }
-
     const message = {
       notification: {
         title: `${sensor.toUpperCase()} Alert!`,
@@ -95,6 +84,5 @@ router.post("/notifications/trigger", async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 });
-
 
 module.exports = router;
