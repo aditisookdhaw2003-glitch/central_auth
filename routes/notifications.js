@@ -60,7 +60,8 @@ router.post("/notifications/trigger", async (req, res) => {
       tokens: tokens
     };
 
-    const response = await admin.messaging().sendMulticast(message);
+    const response = await admin.messaging().sendEachForMulticast(message);
+
 
     return res.json({
       message: `Notifications sent: ${response.successCount}/${tokens.length}`
